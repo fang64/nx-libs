@@ -17,11 +17,6 @@ XCOMM $XFree86: xc/programs/Xserver/GL/Imakefile,v 1.12 2003/08/06 14:04:01 eich
  CORE_SUBDIR = mesa
 #endif
 
-#if BuildXF86DRI && ((defined(XF86Server) && XF86Server) \
-	|| (defined(XorgServer) && XorgServer))
-DRI_SUBDIR = dri
-#endif
-
 SUBDIRS = glx $(DRI_SUBDIR) $(CORE_SUBDIR)
 
 #if DoLoadableServer
