@@ -10,10 +10,6 @@ CCMDEP_PROG = ccmakedep
 EXPORTLISTGEN = exportlistgen
 #endif
 
-#if defined(Win32Architecture) && !defined(CrossCompiling)
-CMKDIRHIER = mkdirhier.exe
-#endif
-
 GCCMDEP_PROG = gccmakedep
 
 #if HasSymLinks
@@ -94,11 +90,6 @@ SimpleProgramTarget_2(lndir)
 #endif
 #endif
 
-#if defined(Win32Architecture) && !defined(CrossCompiling)
-AllTarget(ProgramTargetName(mkdirhier))
-SimpleProgramTarget_3(mkdirhier)
-#endif
-
 #if CrossCompiling
 AllTarget(HostProgramTargetName(makestrs))
 SimpleHostProgramTarget_1(makestrs)
@@ -137,9 +128,6 @@ InstallNamedProg(mkdirhier.sh,mkdirhier,$(BINDIR))
 InstallManPage(mkdirhier,$(MANDIR))
 InstallNamedProg(gccmakedep,gccmakedep,$(BINDIR))
 InstallManPage(gccmakedep,$(MANDIR))
-#if defined(QNX4Architecture) || defined(NTOArchitecture)
-InstallNamedProg(install.sh,install,$(BINDIR))
-#endif
 InstallDriverSDKNamedProg(mkdirhier.sh,mkdirhier.sh,$(DRIVERSDKDIR)/config/util)
 InstallDriverSDKNamedProg(gccmakedep,gccmakedep,$(DRIVERSDKDIR)/config/util)
 InstallNamedProg(mergelib,mergelib,$(BINDIR))
@@ -157,12 +145,5 @@ InstallManPage(mkhtmlindex,$(MANDIR))
 InstallNamedProg(ccmakedep,ccmakedep,$(BINDIR))
 InstallManPage(ccmakedep,$(MANDIR))
 InstallDriverSDKNamedProg(ccmakedep,ccmakedep,$(DRIVERSDKDIR)/config/util)
-#if SystemV || SystemV4
-InstallNamedProg(bsdinst.sh,bsdinst,$(BINDIR))
-InstallDriverSDKNamedProg(bsdinst.sh,bsdinst.sh,$(DRIVERSDKDIR)/config/util)
-#endif
 
 InstallDriverSDKNamedProg(revpath,revpath,$(DRIVERSDKDIR)/config/util)
-#ifdef OS2Architecture
-InstallNamedProg(makedef.cmd,makedef.cmd,$(BINDIR))
-#endif
