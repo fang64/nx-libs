@@ -122,7 +122,7 @@ XORGRELSTRING = XorgManVersionString
  * from the .cf file for your platform.
  */
 #ifndef XorgServer
-#define XorgServer		NO  
+#define XorgServer		NO
 #endif
 #ifndef BuildServer
 #define BuildServer		HasXServer
@@ -139,21 +139,12 @@ XORGRELSTRING = XorgManVersionString
 #ifndef BuildDmx
 #define BuildDmx		NO
 #endif
-#ifndef XdmxServer
-#define XdmxServer		BuildDmx
-#endif
-#ifndef BuildLibrariesForDmx
-#define BuildLibrariesForDmx	XdmxServer
-#endif
 #ifndef BuildLibraries
 #define BuildLibraries		(!BuildServersOnly || BuildClients || \
 				 BuildLibrariesForDmx)
 #endif
 #ifndef BuildLibrariesForXServers
 #define BuildLibrariesForXServers	BuildServer
-#endif
-#ifndef BuildFontServer
-#define BuildFontServer		YES
 #endif
 #ifndef XserverStaticFontLib
 #define XserverStaticFontLib	YES
@@ -292,18 +283,6 @@ XORGRELSTRING = XorgManVersionString
 #endif
 #ifndef MakeLocalFontDir
 #define MakeLocalFontDir	YES
-#endif
-#ifndef HasXAudio
-#define HasXAudio		NO
-#endif
-#ifndef BuildXAudio
-#define BuildXAudio		(HasXAudio & HasCplusplus)
-#endif
-#ifndef HasXAServer
-#define HasXAServer		NO
-#endif
-#ifndef BuildXAServer
-#define BuildXAServer		(HasXAServer & HasCplusplus)
 #endif
 #ifndef BuildX11Lib
 #define BuildX11Lib		BuildLibraries
