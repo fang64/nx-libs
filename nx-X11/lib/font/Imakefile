@@ -61,14 +61,6 @@ REQUIREDLIBS = SharedXfontReqs
    TYPE1PROFILEOBJS = Type1/profiled/?*.o
          TYPE1DONES = Type1/DONE
 #endif
-#if BuildFreeType || BuildFreetype2Library
-       FREETYPEDIRS = FreeType
- FREETYPESHAREDOBJS = FreeType/?*.o
- FREETYPESTATICOBJS = FreeType/$(STATIC_OBJSDIR)?*.o
-  FREETYPEDEBUGOBJS = FreeType/debugger/?*.o
-FREETYPEPROFILEOBJS = FreeType/profiled/?*.o
-      FREETYPEDONES = FreeType/DONE
-#endif
 #if BuildBuiltinFonts
         BUILTINDIRS = builtins
   BUILTINSHAREDOBJS = builtins/?*.o
