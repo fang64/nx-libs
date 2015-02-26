@@ -759,5 +759,6 @@ XCOMM $XFree86: xc/config/cf/xf86site.def,v 3.186 2003/06/25 18:06:22 eich Exp $
 #define BuildXcursorLibrary NO
 #define BuildXftLibrary NO
 #define BuildXft1Library NO
+#define BuildXpmLibrary NO
 #define SharedLibFont NO
 #define BuildLoadableXlibI18n NO

@@ -83,11 +83,15 @@ X11LIBDIR = X11
 XEXTLIBDIR = Xext
 #endif
 
+#if BuildXpmLibrary
+XPMLIBDIR = Xpm
+#endif
+
 #if BuildLibraries
 OLDXLIBDIR = oldX
-XPMLIBDIR = Xpm
 XTSTLIBDIR = Xtst
 #endif
+
 
 
 LINTSUBDIRS = $(XAULIBDIR) \

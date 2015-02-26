@@ -22,7 +22,6 @@ Build-Depends:
  x11proto-core-dev,
  expat,
 Build-Conflicts:
- x11proto-kb-dev,
  x11proto-randr-dev,
  x11proto-record-dev,
  x11proto-xinerama-dev,
