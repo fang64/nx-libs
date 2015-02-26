@@ -76,9 +76,3 @@ clean::
 	RemoveFile(Makefile.proto)
 	RemoveFile(imakemdep_cpp.h)
 	$(RM) -r bootstrap
-
-#ifdef OS2Architecture
-clean::
-	RemoveFiles(imake ccimake)
-
-#endif
