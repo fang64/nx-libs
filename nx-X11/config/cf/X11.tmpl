@@ -113,6 +113,8 @@ XORGRELSTRING = XorgManVersionString
 # else
 #  define UseInstalledOnCrossCompile NO
 # endif
+#else
+# define UseInstalledOnCrossCompile NO
 #endif
 
 #ifndef HasXServer
@@ -358,14 +360,9 @@ XORGRELSTRING = XorgManVersionString
 #define BuildDPMS		YES
 #endif
 #ifndef BuildFontLib
-#if (!defined(XF86Server) || !XF86Server) && (!defined (XorgServer) || !XorgServer)
-#define BuildFontLib		(BuildLibraries || BuildServer)
-#else
 #define BuildFontLib		(BuildLibraries || \
 				 (BuildServer && !DoLoadableServer) || \
-				 XnestServer || XVirtualFramebufferServer || \
-				 XprtServer || XdmxServer)
-#endif
+				 NXAgentServer || NXWinServer)
 #endif
 #ifndef BuildFontCache
 #define BuildFontCache		NO
@@ -400,7 +397,7 @@ XORGRELSTRING = XorgManVersionString
 #endif
 #ifndef BuildXKBlib
 #define BuildXKBlib		(BuildXKB && (!BuildServersOnly || \
-					      XnestServer || XdmxServer || \
+					      NXAgentServer || NXWinServer || \
 					      BuildXkbcomp ))
 #endif
 #ifndef BuildXKBuilib
@@ -597,7 +594,7 @@ XORGRELSTRING = XorgManVersionString
 #define BuildRender		YES
 #endif
 #ifndef BuildRenderLibrary
-#define BuildRenderLibrary	(XdmxServer || !BuildServersOnly)
+#define BuildRenderLibrary	!BuildServersOnly
 #endif
 #ifndef BuildXftLibrary
 #define BuildXftLibrary		BuildRenderLibrary
@@ -2270,54 +2267,6 @@ ProjectUnsharedLibReferences(XONLY,NX_X11,$(XLIBSRC),XBuildLibDir)
 #define ProfileLibXcursor	NO
 #endif
 
-#if BuildAppleWMLibrary
-#ifndef SharedLibAppleWM
-#define SharedLibAppleWM	HasSharedLibraries
-#endif
-#ifndef NormalLibAppleWM
-#define NormalLibAppleWM	(!SharedLibAppleWM || ForceNormalLib)
-#endif
-#ifndef DebugLibAppleWM
-#define DebugLibAppleWM		NO
-#endif
-#ifndef ProfileLibAppleWM
-#define ProfileLibAppleWM	NO
-#endif
-#else
-#undef  SharedLibAppleWM
-#define SharedLibAppleWM	NO
-#undef  NormalLibAppleWM
-#define NormalLibAppleWM	NO
-#undef  DebugLibAppleWM
-#define DebugLibAppleWM		NO
-#undef  ProfileLibAppleWM
-#define ProfileLibAppleWM	NO
-#endif
-
-#if BuildWindowsWMLibrary
-#ifndef SharedLibWindowsWM
-#define SharedLibWindowsWM	HasSharedLibraries
-#endif
-#ifndef NormalLibWindowsWM
-#define NormalLibWindowsWM	(!SharedLibWindowsWM || ForceNormalLib)
-#endif
-#ifndef DebugLibWindowsWM
-#define DebugLibWindowsWM	NO
-#endif
-#ifndef ProfileLibWindowsWM
-#define ProfileLibWindowsWM	NO
-#endif
-#else
-#undef  SharedLibWindowsWM
-#define SharedLibWindowsWM	NO
-#undef  NormalLibWindowsWM
-#define NormalLibWindowsWM	NO
-#undef  DebugLibWindowsWM
-#define DebugLibWindowsWM	NO
-#undef  ProfileLibWindowsWM
-#define ProfileLibWindowsWM	NO
-#endif
-
 #if BuildGLULibrary
 #ifndef SharedLibGlu
 #define SharedLibGlu		HasSharedLibraries
@@ -2698,26 +2647,6 @@ ProjectUnsharedLibReferences(XEVIE,NX_Xevie,$(XEVIELIBSRC),XBuildLibDir)
 SharedLibReferences(XCURSOR,NX_Xcursor,$(XCURSORLIBSRC),SOXCURSORREV,SharedXcursorRev)
 #else
 ProjectUnsharedLibReferences(XCURSOR,NX_Xcursor,$(XCURSORLIBSRC),XBuildLibDir)
-#endif
-
-   APPLEWMLIBSRC = $(LIBSRC)/apple
-#if SharedLibAppleWM
-#ifndef SharedAppleWMRev
-#define SharedAppleWMRev 1.0
-#endif
-SharedLibReferences(APPLEWM,NX_AppleWM,$(APPLEWMLIBSRC),SOAPPLEWMREV,SharedAppleWMRev)
-#else
-ProjectUnsharedLibReferences(APPLEWM,NX_AppleWM,$(APPLEWMLIBSRC),XBuildLibDir)
-#endif
-
-   WINDOWSWMLIBSRC = $(LIBSRC)/windows
-#if SharedLibWindowsWM
-#ifndef SharedWindowsWMRev
-#define SharedWindowsWMRev 1.0
-#endif
-SharedLibReferences(WINDOWSWM,NX_WindowsWM,$(WINDOWSWMLIBSRC),SOWINDOWSWMREV,SharedWindowsWMRev)
-#else
-ProjectUnsharedLibReferences(WINDOWSWM,NX_WindowsWM,$(WINDOWSWMLIBSRC),XBuildLibDir)
 #endif
 
 # ifndef SharedLibXfontcache
