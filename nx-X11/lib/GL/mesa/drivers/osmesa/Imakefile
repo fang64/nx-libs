@@ -68,12 +68,10 @@ MESA_INCLUDES = -I$(MESASRCDIR)/src/mesa \
   THREADOBJS = $(THREADS_LIBS)
 #endif
 
-#if !GlxUseBuiltInDRIDriver
-# ifdef SharedOSMesaReqs
+#ifdef SharedOSMesaReqs
  REQUIREDLIBS = SharedOSMesaReqs
-# else
+#else
  REQUIREDLIBS = MathLibrary $(LDPRELIB) $(XLIB) $(GLXLIB)
-# endif
 #endif
 
 #include <Library.tmpl>
