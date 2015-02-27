@@ -38,11 +38,7 @@ XMULIB = $(XMULIBONLY) $(XTOOLLIB) $(XLIB)
 #define SharedXcursorReqs $(LDPRELIB) $(XRENDERLIB) $(XLIB)
 #define SharedFontencReqs $(LDPRELIB) GzipLibrary
 
-#if GlxUseBuiltInDRIDriver
-#define ExtraSharedGLReqs /**/
-#else
 #define ExtraSharedGLReqs -ldl
-#endif
 #define SharedGLReqs	  $(LDPRELIB) $(XLIB) ExtraSharedGLReqs
 #ifndef SharedGLUReqs
 #define SharedGLUReqs	  $(LDPRELIB) $(XLIB) $(GLXLIB)

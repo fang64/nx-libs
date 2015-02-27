@@ -68,32 +68,19 @@ INSTPGMFLAGS =
 #define AllFBLibs PreFbLibs $(FB) PostFbLibs
 
 #if BuildGlxExt
-# if BuildXF86DRI && ((defined(XF86Server) && XF86Server) \
-	|| (defined(XorgServer) && XorgServer))
-      DRILIB = GL/dri/ModuleLibraryTargetName(dri)
-# else
-      DRILIB = 
-# endif
-# if GlxUseSGISI
-      GLXLIB = GL/glx/ModuleLibraryTargetName(glx) \
-               GL/sgi-si/ModuleLibraryTargetName(GLcore) \
-               $(DRILIB)
-# else
-#  if defined(GlxUseWindows) && GlxUseWindows
+# if defined(GlxUseWindows) && GlxUseWindows
       XWin_GL.exe.GLXLIB = GL/glx/ModuleLibraryTargetName(glx_stdcall) \
                GL/windows/ModuleLibraryTargetName(GLcore)
-#  endif /* GlxUseWindows */
-#  if defined(Win32Architecture) && defined(GlxUseWindows) && GlxUseWindows
+# endif /* GlxUseWindows */
+# if defined(Win32Architecture) && defined(GlxUseWindows) && GlxUseWindows
       GLXLIB = GL/glx/ModuleLibraryTargetName(glx_stdcall) \
                GL/windows/ModuleLibraryTargetName(GLcore)
-#  elif DoLoadableServer
+# elif DoLoadableServer
       GLXLIB = GL/glx/ModuleLibraryTargetName(glx) \
                GL/mesa/GLcore/ModuleLibraryTargetName(GLcore)
-#  else
+# else
       GLXLIB = GL/glx/ModuleLibraryTargetName(glx) \
-               GL/mesa/GLcore/ModuleLibraryTargetName(GLcore) \
-               $(DRILIB)
-#  endif
+               GL/mesa/GLcore/ModuleLibraryTargetName(GLcore)
 # endif
       GLXDIR = GL
 # if defined(cygwinArchitecture) && defined(GlxUseWindows) && GlxUseWindows
