@@ -481,19 +481,6 @@ XORGRELSTRING = XorgManVersionString
 #define XpSvgDDX                YES
 #endif
 
-#ifndef BuildXprint
-#define BuildXprint		YES
-#endif
-#ifndef XprtServer
-#define XprtServer		(BuildServer && BuildXprint)
-#endif
-#ifndef BuildXprintLib
-#define BuildXprintLib		(!BuildServersOnly && BuildXprint)
-#endif
-#ifndef BuildXprintClients
-#define BuildXprintClients	BuildXprintLib
-#endif
-
 #ifndef BuildScreenSaverExt
 #define BuildScreenSaverExt	NO
 #endif
@@ -962,17 +949,6 @@ FCHOWN_DEFINES = -DHAS_FCHOWN
 #ifndef PrintOnlyServer
 #define PrintOnlyServer YES
 #endif
-#ifndef XprintDefines
-#if BuildXprint
-#if PrintOnlyServer
-#define XprintDefines -DXPRINT -DPIXPRIV
-#else
-#define XprintDefines -DXPRINT -DLOADABLEPRINTDDX -DPIXPRIV
-#endif
-#else
-#define XprintDefines /**/
-#endif
-#endif
 #ifndef XkbDefines
 #if BuildXKB
 #define XkbDefines -DXKB
@@ -1205,7 +1181,7 @@ FCHOWN_DEFINES = -DHAS_FCHOWN
 	ShapeDefines XInputDefines XkbDefines LbxDefines AppgroupDefines \
 	XCSecurityDefines CupDefines PervasiveDBEDefines \
 	XF86BigfontExtensionDefines DPMSDefines \
-	XprintDefines XineramaDefines \
+	XineramaDefines \
 	SitePervasiveExtensionDefines RenderDefines RandRDefines \
 	XfixesDefines XDamageDefines CompositeDefines XevieDefines \
 	RootlessDefines
@@ -1506,9 +1482,6 @@ FCHOWN_DEFINES = -DHAS_FCHOWN
 #ifndef ServerConfigDir
 #define ServerConfigDir $(LIBDIR)/xserver
 #endif
-#ifndef XPrintDir
-#define XPrintDir ServerConfigDir
-#endif
 #ifndef EtcX11Directory
 #define EtcX11Directory /etc/X11
 #endif
@@ -1641,7 +1614,6 @@ XCOMM X Window System make variables; these need to be coordinated with rules
        XLOCALEDIR = XLocaleDir		/* locale files */
       LBXPROXYDIR = LbxproxyDir		/* lbxproxy files */
   PROXYMANAGERDIR = ProxyManagerDir	/* proxy manager config files */
-        XPRINTDIR = XPrintDir		/* print config file root */
       XAPPLOADDIR = XAppLoadDir		/* application default resource dir */
        FONTCFLAGS = FontCompilerFlags
 
@@ -2858,7 +2830,7 @@ UnsharedLibReferences(XA,NX_Xa,$(XALIBSRC))
 #endif
 
 #ifndef BuildXaw
-#define BuildXaw (BuildXprintLib && !BuildServersOnly)
+#define BuildXaw (!BuildServersOnly)
 #endif
 
        /* AWIDGETSRC is needed by libXaw6 and libXaw7 */

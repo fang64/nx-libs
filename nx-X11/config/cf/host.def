@@ -705,7 +705,6 @@ XCOMM $XFree86: xc/config/cf/xf86site.def,v 3.186 2003/06/25 18:06:22 eich Exp $
 #define DefaultFontPath             /usr/NX/share/fonts/misc/,/usr/NX/share/fonts/TTF/
 #define DefaultRGBDatabase          /usr/NX/share/rgb
 #define XprtServer                  NO
-#define BuildXprint                 NO
 #define XnestServer                 NO
 #define XVirtualFramebufferServer   NO
 #define BuildFontServer             NO

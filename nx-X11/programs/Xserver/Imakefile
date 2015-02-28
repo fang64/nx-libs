@@ -137,9 +137,7 @@ INSTPGMFLAGS =
     LIBCWRAPPER = os/libcwrapper.o
 #endif
 
-#if !BuildXprint || PrintOnlyServer
 XPFBLIBS = dix/LibraryTargetName(xpstubs)
-#endif
 
 #if BuildRender
       RENDERDIR = render
