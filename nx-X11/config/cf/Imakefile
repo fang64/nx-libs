@@ -22,7 +22,6 @@ version.def
 #endif
 
 DEFFILES = \
-xf86site.def \
 xorgsite.def \
 $(VERSIONDEFFILES) \
 $(HOSTDEFFILES) \
@@ -32,7 +31,6 @@ xorgversion.def
 RULEFILES = \
 Imake.rules \
 X11.rules \
-darwinLib.rules \
 lnxLib.rules \
 noop.rules \
 xf86.rules
@@ -45,7 +43,6 @@ ServerLib.tmpl \
 Threads.tmpl \
 X11.tmpl \
 lnxLib.tmpl \
-xf86.tmpl \
 xorg.tmpl
 
 CFFILES = \
