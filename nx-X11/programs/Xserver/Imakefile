@@ -254,37 +254,13 @@ XCOMM
 XCOMM
 XCOMM force non-parallel build of XF86 servers to prevent MUTEX overrides
 XCOMM
-#if defined(XF86Server) && XF86Server
-XF86SERVER = XFree86
-#endif
-#if defined(XorgServer) && XorgServer
-XF86SERVER = Xorg
-#endif
-#if defined(XnestServer) && XnestServer
-XNEST = Xnext
-#endif
-#if defined(XVirtualFramebufferServer) && XVirtualFramebufferServer
-XVFB = Xvfb
-#endif
-#if XdmxServer
-XDMX = Xdmx
-#endif
-#if defined(XWinServer) && XWinServer && !MakeDllModules
-XWIN = XWin
-#endif
 #if defined(NXAgentServer) && NXAgentServer
 NXAGENT = nxagent
 #endif
 #if defined(NXWinServer) && NXWinServer && !MakeDllModules
 NXWIN = NXWin
 #endif
-#if (defined(XF86Server) && XF86Server) || \
-    (defined(XorgServer) && XorgServer) || \
-    (defined(XnestServer) && XnestServer) || \
-    (defined(NXAgentServer) && NXAgentServer) || \
-    (defined(XVirtualFramebufferServer) && XVirtualFramebufferServer) || \
-    (defined(XdmxServer) && XdmxServer) || \
-    (!MakeDllModules && defined(XWinServer) && XWinServer) || \
+#if (defined(NXAgentServer) && NXAgentServer) || \
     (!MakeDllModules && defined(NXWinServer) && NXWinServer) 
 MakeMutex($(NXAGENT) $(NXWIN))
 #endif
